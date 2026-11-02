@@ -3,91 +3,108 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>YourStartup</title>
-  <meta name="description" content="A student startup prototype for BSAD 281.">
+  <title>Good Growth</title>
+  <meta name="description" content="A calmer way to remember your plant care.">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- =========================================================
-       HEADER: logo text + navigation.
-       Each link points to a "view" further down the page (#home, #explore, #about).
-       ========================================================= -->
   <header class="site-header">
-    <a class="brand" href="#home" id="brand-name">YourStartup</a>
-    <nav aria-label="Main">
-      <a href="#home">Home</a>
-      <a href="#explore">Explore</a>
-      <a href="#about">About</a>
+    <a class="brand" href="#plants" id="brand-name"><span class="brand-mark" aria-hidden="true">gg</span>Good Growth</a>
+    <nav aria-label="Main navigation">
+      <a href="#plants">My plants</a>
+      <a href="#sitters">Plant sitters</a>
     </nav>
+    <a class="header-action" href="#plants" id="header-add">+ <span>Add a plant</span></a>
   </header>
 
   <main>
-
-    <!-- =======================================================
-         VIEW 1: HOME — what you do, for whom, and why it matters.
-         ======================================================= -->
-    <section id="home" data-view>
-      <div class="hero">
-        <p class="eyebrow">Prototype</p>
-        <h1 id="tagline">One sentence that says what your startup does.</h1>
-        <p class="lead" id="pitch">
-          Who is your customer, what problem do they have, and why is your
-          solution better than what they use today?
-        </p>
-        <a class="button" href="#explore">See it in action</a>
+    <section id="plants" data-view>
+      <div class="welcome-row">
+        <div>
+          <p class="eyebrow">YOUR LITTLE CORNER OF GREEN</p>
+          <h1 id="tagline">A calmer way to care for your plants.</h1>
+          <p class="lead" id="pitch">Know what needs water, when it needs it, and who can help while you are away.</p>
+        </div>
+        <button class="button add-button" type="button" id="open-plant-form"><span aria-hidden="true">+</span> Add a plant</button>
       </div>
 
-      <div class="steps">
-        <div class="card">
-          <h2>1. Step one</h2>
-          <p>Describe the first thing a customer does.</p>
+      <div class="stats" aria-label="Plant care summary">
+        <article class="stat stat-due">
+          <span class="stat-icon" aria-hidden="true">!</span>
+          <div><p>Needs attention</p><strong id="due-count">0</strong><span>ready for a drink</span></div>
+        </article>
+        <article class="stat stat-upcoming">
+          <span class="stat-icon" aria-hidden="true">↗</span>
+          <div><p>Coming up</p><strong id="upcoming-count">0</strong><span>in the next 2 days</span></div>
+        </article>
+        <article class="stat stat-total">
+          <span class="stat-icon" aria-hidden="true">✿</span>
+          <div><p>Your collection</p><strong id="total-count">0</strong><span>plants growing with you</span></div>
+        </article>
+      </div>
+
+      <section class="collection-section" aria-labelledby="collection-heading">
+        <div class="section-heading">
+          <div><p class="eyebrow">THE DAILY RHYTHM</p><h2 id="collection-heading">Your plants</h2></div>
+          <label class="search"><span class="visually-hidden">Search your plants</span><span class="search-icon" aria-hidden="true">⌕</span><input type="search" id="search-box" placeholder="Find a plant"></label>
         </div>
-        <div class="card">
-          <h2>2. Step two</h2>
-          <p>Describe what happens next.</p>
+        <div class="filters" role="group" aria-label="Filter plants">
+          <button type="button" class="filter-button active" data-filter="all" aria-pressed="true">All plants <span id="all-filter-count">0</span></button>
+          <button type="button" class="filter-button" data-filter="due" aria-pressed="false">Needs water <span id="due-filter-count">0</span></button>
+          <button type="button" class="filter-button" data-filter="healthy" aria-pressed="false">Doing well</button>
         </div>
-        <div class="card">
-          <h2>3. Step three</h2>
-          <p>Describe the result the customer gets.</p>
+        <div class="plant-list" id="plant-list" aria-live="polite"></div>
+        <div class="empty-state" id="empty-message" hidden>
+          <span class="empty-icon" aria-hidden="true">✿</span>
+          <h3>Your plant shelf is ready</h3>
+          <p>Add your first plant to start a care rhythm that works for you.</p>
+          <button class="button" type="button" id="empty-add">Add your first plant</button>
         </div>
+        <p class="no-results" id="no-results" hidden>No plants match that search.</p>
       </div>
     </section>
 
-    <!-- =======================================================
-         VIEW 2: EXPLORE — a list built from the fake data in data.js.
-         ======================================================= -->
-    <section id="explore" data-view hidden>
-      <h1>Explore</h1>
-      <p class="muted">These examples are fake. They come from <code>data.js</code>.</p>
-
-      <label class="search">
-        <span>Search</span>
-        <input type="search" id="search-box" placeholder="Type to filter…">
-      </label>
-
-      <p class="muted" id="saved-count"></p>
-      <div class="grid" id="listing-grid"></div>
-      <p class="empty" id="empty-message" hidden>Nothing matches your search.</p>
+    <section id="sitters" data-view hidden>
+      <div class="sitter-intro">
+        <p class="eyebrow">A LITTLE HELP, WHEN YOU NEED IT</p>
+        <h1>Good hands for your green friends.</h1>
+        <p class="lead">Heading away? Meet local plant people who can keep your routine going while you are gone.</p>
+      </div>
+      <div class="sitter-notice"><span aria-hidden="true">i</span><p><strong>Early idea</strong> Sitter profiles and requests are sample-only. No one is contacted and no payment is collected.</p></div>
+      <div class="sitter-grid" id="sitter-list"></div>
+      <section class="business-note">
+        <p class="eyebrow">A THOUGHTFUL WAY TO GROW</p>
+        <h2>Care tools are free. Extra hands can be booked.</h2>
+        <p>Good Growth could earn a small fee when a plant owner books a sitter. That gives people useful care reminders for free, while local sitters find new customers.</p>
+        <span class="prototype-label">Business model concept · not currently available</span>
+      </section>
     </section>
-
-    <!-- =======================================================
-         VIEW 3: ABOUT — your team and your story.
-         ======================================================= -->
-    <section id="about" data-view hidden>
-      <h1>About us</h1>
-      <p>Tell the story of why your team started this company.</p>
-      <p>Use first names only, or no names at all — this site is public.</p>
-    </section>
-
   </main>
 
-  <!-- Keep this footer. Your site must say it is a student project. -->
   <footer class="site-footer">
-    <p>Student prototype for BSAD 281 at St. Francis Xavier University. Not a real company — all data is fictional.</p>
+    <p>Student prototype for BSAD 281 at St. Francis Xavier University. Not a real company. Sitter profiles and prices are fictional.</p>
   </footer>
 
-  <!-- Scripts load in this order: data first, then the code that uses it. -->
+  <dialog class="plant-dialog" id="plant-dialog" aria-labelledby="plant-dialog-title">
+    <form id="plant-form">
+      <div class="dialog-heading"><div><p class="eyebrow">MAKE IT YOURS</p><h2 id="plant-dialog-title">Add a plant</h2></div><button class="icon-button" type="button" id="close-plant-form" aria-label="Close">×</button></div>
+      <label>Plant name<input name="name" required maxlength="40" placeholder="e.g. Window fern"></label>
+      <label>Plant type <span class="optional">optional</span><input name="species" maxlength="60" placeholder="e.g. Boston fern"></label>
+      <label>Water every
+        <select name="interval" required>
+          <option value="1">Every day</option><option value="2">2 days</option><option value="3">3 days</option><option value="5">5 days</option><option value="7" selected>7 days</option><option value="10">10 days</option><option value="14">14 days</option><option value="21">21 days</option><option value="30">30 days</option>
+        </select>
+      </label>
+      <p class="form-hint">Care needs vary by plant and season. You can adjust this schedule any time.</p>
+      <div class="dialog-actions"><button class="text-button" type="button" id="cancel-plant-form">Cancel</button><button class="button" type="submit">Add to my plants</button></div>
+    </form>
+  </dialog>
+
+  <dialog class="plant-dialog confirmation-dialog" id="confirmation-dialog" aria-labelledby="confirmation-title">
+    <div class="confirmation-content"><span class="confirmation-mark" aria-hidden="true">✓</span><h2 id="confirmation-title">Request noted</h2><p id="confirmation-message"></p><button class="button" type="button" id="close-confirmation">Got it</button></div>
+  </dialog>
+
   <script src="data.js"></script>
   <script src="app.js"></script>
 </body>

@@ -61,7 +61,7 @@ Copy one, fill in the blanks, and send it:
 
 > Our startup idea is: **[one sentence]**. Our customers are **[who]**, and the problem we solve is **[problem]**. Update `data.js` and the text in `index.html` so the site describes our startup. Don't change the layout yet.
 
-> Replace the sample listings in `data.js` with 8 realistic but fake examples that fit our startup.
+> Replace the sample plants and sitter profiles in `data.js` with realistic but fictional examples that fit our startup.
 
 > Add a page that shows how our product gets more valuable as more people use it. Use fake numbers so we can compare 10 users with 10,000 users.
 
@@ -135,7 +135,7 @@ That link is your live site. Every commit updates it automatically within a few 
 |---|---|
 | `index.html` | The structure and text of your site |
 | `styles.css` | How it looks: colours, fonts, spacing |
-| `data.js` | All your fake data (listings, prices, users…) |
+| `data.js` | Fictional sample plants and sitter profiles |
 | `app.js` | What the site *does* when people click things |
 | `project-notes/PROJECT_LOG.md` | Your team's record of prompts, problems and decisions |
 | `project-notes/BUSINESS_CASE.md` | The business reasoning behind your prototype |
